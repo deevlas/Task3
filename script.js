@@ -208,7 +208,7 @@ function bigArrayCars(array, nameId) {
         divCar.innerText = textCar
         idUl.appendChild(divCar)
     }
-    document.body.appendChild(idUl)
+    // document.body.appendChild(idUl)
 
 }
 
@@ -287,22 +287,26 @@ function biggestArrayCars(array, nameId) {
         let divCar = document.createElement('div')
         let textCar = "\n"
         for (let car in array[i]) {
-            console.log(typeof array[i][car])
+            let propCar = document.createElement('div')
+
             if (typeof array[i][car] === "object") {
-                textCar = textCar + car + ": " + "\n"
+
+                textCar = car + ": " + "\n"
                 for (let carLine in array[i][car]) {
 
                     textCar = textCar + " - - " + carLine + ": " + array[i][car][carLine] + "\n";
 
                 }
             } else {
-                textCar = textCar + car + ": " + array[i][car] + "\n";
+
+                textCar = car + ": " + array[i][car] + "\n";
             }
+            propCar.innerText = textCar
+            divCar.appendChild(propCar)
         }
-        divCar.innerText = textCar
         idUl.appendChild(divCar)
     }
-    document.body.appendChild(idUl)
+    // document.body.appendChild(idUl)
 
 }
 
