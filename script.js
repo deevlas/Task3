@@ -196,12 +196,119 @@ elemWithText("div", "Hello guys")
 // Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали. Всі властивості авто в обному блоці
 
 
-function bigArrayCars() {
+function bigArrayCars(array, nameId) {
+    let idUl = document.getElementById(nameId)
 
+    for (let i = 0; i < array.length; i++) {
+        let divCar = document.createElement('div')
+        let textCar = "\n"
+        for (let car in array[i]) {
+            textCar = textCar + car + ": " + array[i][car] + "\n";
+        }
+        divCar.innerText = textCar
+        idUl.appendChild(divCar)
+    }
+    document.body.appendChild(idUl)
 
 }
+
+
 bigArrayCars([{
-        "model": "toyota",
+        "model": "Toyota",
+        "year": 2014,
+        "power": 210,
+        "color": "silver",
+        // "driver": {
+        //     "name": "Kolya",
+        //     "age": 32,
+        //     "sex": "male",
+        //     "experince": 5
+        // }
+    },
+    {
+        "model": "Mercedes",
+        "year": 2012,
+        "power": 210,
+        "color": "red",
+        // "driver": {  
+        //     "name": "Oleksiy",
+        //     "age": 26,
+        //     "sex": "male",
+        //     "experince": 8
+        // }
+    },
+    {
+        "model": "Jeep",
+        "year": 2016,
+        "power": 310,
+        "color": "black",
+        // "driver": {
+        //     "name": "Olexandr",
+        //     "age": 35,
+        //     "sex": "male",
+        //     "experince": 10
+        // }
+    },
+    {
+        "model": "Cadillac",
+        "year": 2018,
+        "power": 210,
+        "color": "red",
+        // "driver": {
+        //     "name": "Maxim",
+        //     "age": 24,
+        //     "sex": "male",
+        //     "experince": 3
+        // }
+    },
+    {
+        "model": "Lexus",
+        "year": 2015,
+        "power": 230,
+        "color": "brown",
+        // "driver": {
+        //     "name": "Mariia",
+        //     "age": 24,
+        //     "sex": "female",
+        //     "experince": 4
+        // }
+    }
+], "cars")
+
+
+// - приймає масив автомобілів (можна взяти з попередніх дз ),та  індентифікатор елемнту в який потрібно додати список цих автомобілів.
+// Для кожного автомобіля створити свій блок, та додати його в елемент, індентифікатор якого ви отримали.
+// Для кожної властивості створити всередені блока автомоблія свій блок
+
+function biggestArrayCars(array, nameId) {
+    let idUl = document.getElementById(nameId)
+
+    for (let i = 0; i < array.length; i++) {
+        let divCar = document.createElement('div')
+        let textCar = "\n"
+        for (let car in array[i]) {
+            console.log(typeof array[i][car])
+            if (typeof array[i][car] === "object") {
+                textCar = textCar + car + ": " + "\n"
+                for (let carLine in array[i][car]) {
+
+                    textCar = textCar + " - - " + carLine + ": " + array[i][car][carLine] + "\n";
+
+                }
+            } else {
+                textCar = textCar + car + ": " + array[i][car] + "\n";
+            }
+        }
+        divCar.innerText = textCar
+        idUl.appendChild(divCar)
+    }
+    document.body.appendChild(idUl)
+
+}
+
+
+biggestArrayCars([{
+        "model": "Toyota",
         "year": 2014,
         "power": 210,
         "color": "silver",
@@ -213,7 +320,7 @@ bigArrayCars([{
         }
     },
     {
-        "model": "mercedes",
+        "model": "Mercedes",
         "year": 2012,
         "power": 210,
         "color": "red",
@@ -225,7 +332,7 @@ bigArrayCars([{
         }
     },
     {
-        "model": "jeep",
+        "model": "Jeep",
         "year": 2016,
         "power": 310,
         "color": "black",
@@ -237,7 +344,7 @@ bigArrayCars([{
         }
     },
     {
-        "model": "cadillac",
+        "model": "Cadillac",
         "year": 2018,
         "power": 210,
         "color": "red",
@@ -249,7 +356,7 @@ bigArrayCars([{
         }
     },
     {
-        "model": "lexus",
+        "model": "Lexus",
         "year": 2015,
         "power": 230,
         "color": "brown",
@@ -260,4 +367,4 @@ bigArrayCars([{
             "experince": 4
         }
     }
-])
+], "carsId")
